@@ -1,5 +1,5 @@
 {
-  "name": "create-gulp-project-cli",
+  "name": "create-gulp-project",
   "version": "1.0.0",
   "main": "src/app.js",
   "dependencies": {
@@ -9,7 +9,8 @@
   "scripts": {},
   "author": "Quentin Wendegass",
   "license": "ISC",
-  "description": "",
+  "bin" : { "cgp" : "./src/app.js" },
+  "description": "Generate Gulp Project",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/quentinwendegass/create-gulp-project-cli.git"
