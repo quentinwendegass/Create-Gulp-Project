@@ -1,0 +1,21 @@
+{
+  "name": "create-gulp-project-cli",
+  "version": "1.0.0",
+  "main": "src/app.js",
+  "dependencies": {
+    "readline-sync": "^1.4.9"
+  },
+  "devDependencies": {},
+  "scripts": {},
+  "author": "Quentin Wendegass",
+  "license": "ISC",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quentinwendegass/create-gulp-project-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/quentinwendegass/create-gulp-project-cli/issues"
+  },
+  "homepage": "https://github.com/quentinwendegass/create-gulp-project-cli#readme"
+}
