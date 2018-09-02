@@ -1,0 +1,24 @@
+{
+  "rootDir": "app",
+  "htmlDir": "html",
+  "cssDir": "css",
+  "jsDir": "js",
+  "resDir": "res",
+  "modules": [
+    {
+      "name": "server",
+      "options": {
+        "port": 444
+      }
+    },
+    {
+      "name": "minify",
+      "options": {
+        "types": [
+          "css"
+        ]
+      }
+    }
+  ],
+  "external": []
+}

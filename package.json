@@ -3,15 +3,19 @@
   "version": "1.0.1",
   "main": "src/app.js",
   "dependencies": {
-    "readline-sync": "^1.4.9"
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-htmlmin": "^4.0.0",
+    "gulp-minify": "^3.1.0",
+    "gulp-nunjucks-render": "^2.2.2",
+    "gulp-plumber": "^1.2.0",
+    "readline-sync": "^1.4.9",
+    "run-sequence": "^2.2.1"
   },
   "devDependencies": {},
   "scripts": {},
   "author": "Quentin Wendegass",
   "license": "ISC",
-  "bin": {
-    "cgp": "./src/app.js"
-  },
   "description": "Generate Gulp Project",
   "repository": {
     "type": "git",
