@@ -1,6 +1,6 @@
 {
   "name": "create-gulp-project",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "main": "src/index.js",
   "dependencies": {
     "del": "^3.0.0",
