@@ -2,15 +2,14 @@ const loader = require("../loader");
 const logger = require("../logger");
 
 module.exports = () => {
-    return () => {
-        const names = loader.loadAllModuleNames();
 
-        logger.info("\nAll available modules");
+    const names = loader.loadAllModuleNames();
 
-        for (let i = 0; i < names.length; i++) {
-            logger.info(`- ${names[i]}`);
-        }
+    logger.info("\nAll available modules");
 
-        logger.info("");
-    };
+    for (let i = 0; i < names.length; i++) {
+        logger.info(`- ${names[i]}`);
+    }
+
+    logger.info("");
 };

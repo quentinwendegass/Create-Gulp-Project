@@ -1,6 +1,8 @@
-const { Module } = require("../module");
+const { Command} = require("../command");
+const autoprefixer = require('gulp-autoprefixer');
+
 
 module.exports = () => {
 
-    return new Module()
+    return [new Command(() => autoprefixer(), 10, ['build-css'])];
 };

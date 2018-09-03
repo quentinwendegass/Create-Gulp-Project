@@ -1,24 +1,17 @@
 const gulp = require("gulp");
-const config = require("../config")();
 const plumber = require("gulp-plumber");
 const nunjucksRender = require("gulp-nunjucks-render");
 const logger = require("../logger");
-const { Module } = require("../module");
+const { Command } = require("../command");
 
 
-module.exports = ({ pagesDir, templateDir, destDir }) => {
-
-    config.open();
+module.exports = ({ pagesDir, templateDir }, config) => {
 
     pagesDir = pagesDir || "pages";
     pagesDir = config.rootDir + "/" + pagesDir + "/**/*.+(html|njk)";
 
     templateDir = templateDir || "templates";
-    templateDir = config.htmlDir + "/" + templateDir + "/**/*.+(html|njk)";
-
-    destDir = destDir || config.rootDir;
-    destDir = config.rootDir + "/" + destDir;
-
+    templateDir = config.rootDir + "/" + templateDir;
 
     gulp.task('nunjucks', () => {
         return gulp.src(pagesDir)
@@ -28,15 +21,15 @@ module.exports = ({ pagesDir, templateDir, destDir }) => {
                 }
             }))
             .pipe(nunjucksRender({
-                path: ['app/templates']
+                path: [templateDir]
             }))
-            .pipe(gulp.dest(destDir));
+            .pipe(gulp.dest(config.rootDir + "/" + config.htmlDir));
     });
 
 
-    return new Module(null, () => {
-        gulp.watch([pagesDir, templateDir], ['nunjucks']);
-    });
+    return [new Command(() => {
+        gulp.watch([pagesDir, templateDir + "/**/*.+(html|njk)"], ['nunjucks']);
+    }, 100, ["watch"])];
 };
 
 

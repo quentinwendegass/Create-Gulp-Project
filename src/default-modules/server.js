@@ -1,6 +1,17 @@
-const { Module } = require("../module");
+const gulp = require("gulp");
+const http = require("http");
+const st = require("st");
 
-module.exports = () => {
+module.exports = ({port}, config) => {
 
-    return new Module()
+    port = port || 3500;
+
+    gulp.task('server', function(done) {
+
+        http.createServer(
+            st({ path: config.distDir, index: 'index.html', cache: false })
+        ).listen(port, done);
+    });
+
+    return []
 };

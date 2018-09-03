@@ -19,7 +19,7 @@ let configPrototype = {
     open: function () {
 
         if (!fs.existsSync(configurationPath)) {
-            logger.error("No config file in current directory!");
+            logger.error("No config file in current directory! Please run \"gulp init\".");
             process.exit(1);
         }
 
@@ -33,6 +33,7 @@ let configPrototype = {
             setProperty("cssDir", this, config, "css");
             setProperty("jsDir", this, config, "js");
             setProperty("resDir", this, config, "res");
+            setProperty("distDir", this, config, "dist");
             setProperty("modules", this, config, []);
             setProperty("external", this, config, [], true);
 
@@ -47,6 +48,7 @@ let configPrototype = {
     write: function () {
 
         if (fs.existsSync(configurationPath) && !this.isOpen) {
+            logger.error("cgpfile already exists!");
             logger.error("Internal error! Config file must be opened before it can be written.");
             process.exit(1);
         }

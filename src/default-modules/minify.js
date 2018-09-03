@@ -1,7 +1,8 @@
-const { Command, Module } = require("../module");
+const { Command } = require("../command");
 const minifyJS = require('gulp-minify');
 const minifyHTML = require('gulp-htmlmin');
 const cleanCSS = require('gulp-clean-css');
+const rename = require('gulp-rename');
 
 
 module.exports = ({ buildTasks, priority }) => {
@@ -26,10 +27,13 @@ module.exports = ({ buildTasks, priority }) => {
     }
     if(buildTasks.includes('css')){
         commands.push( new Command(() => cleanCSS(), priority, ["build-css"]));
+        commands.push(new Command(() => rename(function(file) {
+            file.basename += ".min";
+        }), 1000, ["build-css"]));
     }
     if(buildTasks.includes('html')){
-        commands.push( new Command(() =>  minifyHTML({collapseWhitespace: true}), priority, ["build-css"]));
+        commands.push( new Command(() => minifyHTML({collapseWhitespace: true}), priority, ["build-html"]));
     }
 
-    return new Module(commands);
+    return commands;
 };
