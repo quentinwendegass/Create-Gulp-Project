@@ -1,6 +1,9 @@
 const gulp = require("gulp");
+const livereload = require("gulp-livereload");
 
 module.exports = function () {
+    livereload.listen();
+
     gulp.watch(this.config.rootDir + "/" + this.config.cssDir + "/**/*.css", ["build-css"]);
     gulp.watch(this.config.rootDir + "/" + this.config.htmlDir + "/**/*.html", ["build-html"]);
     gulp.watch(this.config.rootDir + "/" + this.config.jsDir + "/**/*.js", ["build-js"]);

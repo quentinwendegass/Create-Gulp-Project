@@ -24,7 +24,7 @@ module.exports = ({ sassDir }, config) => {
                 outputStyle: 'expanded'
             }   ).on('error', sass.logError))
 
-            .pipe(gulp.dest(config.cssDir));
+            .pipe(gulp.dest(config.rootDir + "/" + config.cssDir));
     });
 
     return [new Command(() => {gulp.watch(sassDir, ['sass']);}, 100, ["watch"])];
