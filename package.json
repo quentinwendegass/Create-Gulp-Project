@@ -27,6 +27,9 @@
   "author": "Quentin Wendegass",
   "license": "ISC",
   "description": "Generate Gulp Project",
+  "bin": {
+    "create-gulp-project": "./init.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/quentinwendegass/create-gulp-project-cli.git"
