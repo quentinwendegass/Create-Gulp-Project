@@ -15,6 +15,6 @@ module.exports = function () {
         stream = stream.pipe(this.commands[i].cmd());
     }
 
-    stream = stream.pipe(gulp.dest(this.config.rootDir + "/" + this.config.distDir + "/" + this.config.htmlDir)).pipe(livereload());
+    stream = stream.pipe(gulp.dest(this.config.rootDir + "/" + this.config.distDir)).pipe(livereload());
     return stream;
 };
