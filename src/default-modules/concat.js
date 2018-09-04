@@ -4,7 +4,7 @@ const sort = require('gulp-sort');
 const rename = require('gulp-rename');
 
 
-module.exports = ({ buildTasks, priority }, config) => {
+module.exports.commands = ({ buildTasks, priority }, config) => {
 
     buildTasks = buildTasks || ['css', 'js'];
     priority = priority || 100;

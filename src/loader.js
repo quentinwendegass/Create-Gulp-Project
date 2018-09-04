@@ -4,26 +4,48 @@ const logger = require("./logger");
 const gulp = require("gulp");
 
 
-module.exports.loadModules = (mods, externals) => {
+
+module.exports.invokeModuleScript = (module, config) => {
     let paths = [__dirname.concat("/default-modules")];
 
-    if(externals){
-        paths = paths.concat(externals);
+
+    if(config.external){
+        paths = paths.concat(config.external);
+    }
+
+    for(let i = 0; i < paths.length; i++){
+        let files = fs.readdirSync(paths[i]);
+
+        if(files.includes(module + ".js")){
+            let m = require(paths[i] + "/" + module);
+            if(m.script){
+                m.script(config);
+                logger.log(`Invoked script successfully on module "${module}"!`);
+            }
+            break;
+        }
+    }
+};
+
+module.exports.loadModuleCommands = (mods) => {
+    let paths = [__dirname.concat("/default-modules")];
+
+    config.open();
+
+    if(config.external){
+        paths = paths.concat(config.external);
     }
 
     let commands = [];
 
-    config.open();
 
     for(let i = 0; i < paths.length; i++){
         let files = fs.readdirSync(paths[i]);
 
         for(let j = 0; j < mods.length; j++){
             if(files.includes(mods[j].name + ".js")){
-                commands = commands.concat(require(paths[i] + "/" + mods[j].name)(mods[j].options, config));
+                commands = commands.concat(require(paths[i] + "/" + mods[j].name).commands(mods[j].options, config));
                 logger.log(`Module "${mods[j].name}" successfully loaded.`);
-            }else{
-                logger.warn(`"${mods[j].name}" was not found! Loading is skipped.`);
             }
         }
     }

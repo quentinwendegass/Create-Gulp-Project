@@ -93,7 +93,7 @@ mkDir(config.rootDir + "/" + config.resDir);
 mkDir(config.rootDir + "/" + config.distDir);
 
 if(!fs.existsSync(process.cwd() + "/" + rootDir + "/index.html")){
-    fs.createReadStream(__dirname + '/html-template.html').pipe(fs.createWriteStream(process.cwd() + "/" + config.rootDir + "/index.html"));
+    fs.createReadStream(__dirname + '/templates/html-template.html').pipe(fs.createWriteStream(process.cwd() + "/" + config.rootDir + "/index.html"));
 }
 
 console.info("Initialization completed!");

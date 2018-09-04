@@ -5,7 +5,7 @@ const cleanCSS = require('gulp-clean-css');
 const rename = require('gulp-rename');
 
 
-module.exports = ({ buildTasks, priority }) => {
+module.exports.commands = ({ buildTasks, priority }) => {
 
     buildTasks = buildTasks || ['css', 'js', 'html'];
     priority = priority || 300;

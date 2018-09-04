@@ -3,9 +3,37 @@ const plumber = require("gulp-plumber");
 const nunjucksRender = require("gulp-nunjucks-render");
 const logger = require("../logger");
 const { Command } = require("../command");
+const fs = require("fs");
+const watch = require("gulp-watch");
 
 
-module.exports = ({ pagesDir, templateDir }, config) => {
+module.exports.script = (config) => {
+    mkDir(config.rootDir + "/pages");
+    mkDir(config.rootDir + "/templates");
+
+    copyTemplate(config.rootDir + "/pages/index.njk", "nunjucks-page-template.njk");
+    copyTemplate(config.rootDir + "/templates/layout.njk", "nunjucks-layout-template.njk");
+};
+
+function copyTemplate(path, template) {
+    if(!fs.existsSync(process.cwd() + "/" + path)){
+        try {
+            fs.createReadStream(__dirname + '/../../templates/' + template).pipe(fs.createWriteStream(process.cwd() + "/" + path));
+        }catch (e) {
+            logger.warn(e.message);
+        }
+    }
+}
+
+function mkDir(path){
+    try {
+        fs.mkdirSync(process.cwd() + "/" + path);
+    }catch (e) {
+        logger.warn(e.message);
+    }
+}
+
+module.exports.commands = ({ pagesDir, templateDir }, config) => {
 
     pagesDir = pagesDir || "pages";
     pagesDir = config.rootDir + "/" + pagesDir + "/**/*.+(html|njk)";
@@ -27,9 +55,11 @@ module.exports = ({ pagesDir, templateDir }, config) => {
     });
 
 
-    return [new Command(() => {
-        gulp.watch([pagesDir, templateDir + "/**/*.+(html|njk)"], ['nunjucks']);
-    }, 100, ["watch"])];
+    return [
+        new Command(() =>  watch([pagesDir, templateDir + "/**/*.+(html|njk)"], function() {
+            gulp.start('nunjucks');
+        }), 100, ["watch"]),
+        new Command(() => "nunjucks", 10, ["build"])];
 };
 
 

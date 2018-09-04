@@ -9,7 +9,7 @@ module.exports = () => {
 
     config.open();
 
-    loader.loadModules(config.modules);
+    loader.loadModuleCommands(config.modules);
 
     for(let i = 0; i < files.length; i++){
         const file = files[i].replace(/\.js$/, "");

@@ -12,8 +12,6 @@ module.exports = function () {
     }));
 
     for (let i = 0; i < this.commands.length; i++) {
-        console.log(this.commands[i]);
-
         stream = stream.pipe(this.commands[i].cmd());
     }
 
