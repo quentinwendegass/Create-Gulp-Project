@@ -2,6 +2,12 @@
   "name": "create-gulp-project",
   "version": "2.2.0",
   "main": "src/index.js",
+  "files": [
+    "src/",
+    "templates/",
+    "init.js",
+    "README.md"
+  ],
   "dependencies": {
     "del": "^3.0.0",
     "gulp": "^3.9.1",
