@@ -1,0 +1,26 @@
+$defaultFont: "Helvetica Neue", sans-serif;
+
+html, body{
+  background-color: #333333;
+}
+
+img{
+  display: block;
+  margin: auto;
+}
+
+h1{
+  text-align: center;
+  font-family: $defaultFont;
+  color: white;
+  font-weight: 700;
+  font-size: 80px;
+}
+
+a{
+  display: block;
+  margin: 100px 0;
+  color: crimson;
+  text-align: center;
+  font-family: $defaultFont;
+}

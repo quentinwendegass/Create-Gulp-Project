@@ -1,0 +1,50 @@
+{
+  "rootDir": "./app",
+  "htmlDir": "./",
+  "cssDir": "./css",
+  "jsDir": "./js",
+  "resDir": "./res",
+  "distDir": "./dist",
+  "modules": [
+    {
+      "name": "minify",
+      "options": {
+        "buildTasks": [
+          "css",
+          "js",
+          "html"
+        ]
+      }
+    },
+    {
+      "name": "imagemin"
+    },
+    {
+      "name": "autoprefixer"
+    },
+    {
+      "name": "server",
+      "options": {
+        "port": 8070
+      }
+    },
+    {
+      "name": "sass",
+      "options": {}
+    },
+    {
+      "name": "nunjucks",
+      "options": {}
+    },
+    {
+      "name": "concat",
+      "options": {
+        "buildTasks": [
+          "css",
+          "js"
+        ]
+      }
+    }
+  ],
+  "external": []
+}
