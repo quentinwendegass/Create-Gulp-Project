@@ -69,7 +69,7 @@ if(!appName){
     data = {
         name: appName,
         version: "1.0.0",
-        main: "index.js",
+        main: "gulpfile.js",
         dependencies: {},
         devDependencies: {},
         license: "ISC",
@@ -94,6 +94,10 @@ mkDir(config.rootDir + "/" + config.distDir);
 
 if(!fs.existsSync(process.cwd() + "/" + rootDir + "/index.html")){
     fs.createReadStream(__dirname + '/templates/html-template.html').pipe(fs.createWriteStream(process.cwd() + "/" + config.rootDir + "/index.html"));
+}
+
+if(!fs.existsSync(process.cwd() + "/.gitignore")){
+    fs.writeFileSync(process.cwd() + "/.gitignore", "node_modules/");
 }
 
 console.info("Initialization completed!");
