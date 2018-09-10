@@ -32,7 +32,9 @@
     "run-sequence": "^2.2.1",
     "st": "^1.2.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.0.0"
+  },
   "scripts": {},
   "author": "Quentin Wendegass",
   "license": "ISC",

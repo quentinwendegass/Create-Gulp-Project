@@ -114,7 +114,7 @@ app/
 ├── index.html
 ├── js
 │   └── main
-│       ├── test1.js
+│       ├── test1.ts
 │       └── test2.js
 ├── pages
 │   └── index.njk
@@ -155,7 +155,7 @@ Concatenates all files that are in a folder sorted by filename. The output file 
 │       └── main.js
 ├── js
 │   ├── main
-│   │    ├── test1.js
+│   │    ├── test1.ts
 │   │    └── test2.js
 │   └── other.js
 
@@ -198,7 +198,10 @@ Development server that supports [livereload](https://www.npmjs.com/package/live
 * port: Defines the port that the server is using (Default: 3500)
 
 
+### babel
+Compiler for Javascript. For more information visit [Babeljs](https://babeljs.io)
 
+You can configure babel within the **.babelrc** file.
 
 
 

@@ -1,3 +1,5 @@
-console.log("Adding 2 and 1...");
-console.log("Result: " + add(2, + 1));
+const add = (a, b) => a + b;
+
+console.log(x);
+console.log("Result: " + add(2, 1));
 

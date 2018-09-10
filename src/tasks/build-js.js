@@ -5,7 +5,7 @@ const logger = require("../logger");
 
 module.exports = function () {
 
-    let stream = gulp.src(this.config.rootDir + "/" + this.config.jsDir + '/**/*.js').pipe(plumber({
+    let stream = gulp.src(this.config.rootDir + "/" + this.config.jsDir + '/**/*.+(js|ts)').pipe(plumber({
         errorHandler: (err) => {
             logger.error(err);
         }
