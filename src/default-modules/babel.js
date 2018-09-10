@@ -6,7 +6,7 @@ module.exports.script = (config) => {
     if(!fs.existsSync(process.cwd() + "/.babelrc")){
         fs.writeFileSync(process.cwd() + "/.babelrc", `{
   "presets": ["@babel/env"]
-}`)
+}`);
     }
 
 };

@@ -17,5 +17,5 @@ module.exports.commands = ({port}, config) => {
         logger.info("\nServer listening on localhost:" + port + "\n");
     });
 
-    return []
+    return [];
 };

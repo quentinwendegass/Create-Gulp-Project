@@ -42,7 +42,7 @@ module.exports = function () {
 
     config.write();
 
-    logger.info(`\nRemoved ${success.length} modules!`)
+    logger.info(`\nRemoved ${success.length} modules!`);
     for (let i = 0; i < success.length; i++) {
         logger.info(`- ${success[i]}`);
     }

@@ -11,12 +11,15 @@ function setProperty(name, self, config, defaultValue, noWarn) {
         return;
     }
 
-    self[name] = config[name]
+    self[name] = config[name];
 }
 
 
-let configPrototype = {
-    open: function () {
+function ConfigPrototype (isOpen) {
+
+    this.isOpen = isOpen;
+
+    this.open = function () {
 
         if (!fs.existsSync(configurationPath)) {
             logger.error("No config file in current directory! Please run \"gulp init\".");
@@ -37,15 +40,15 @@ let configPrototype = {
             setProperty("modules", this, config, []);
             setProperty("external", this, config, [], true);
 
-            this.__proto__.isOpen = true;
+            Object.setPrototypeOf(this, new ConfigPrototype(true));
             return;
         }
 
         logger.error("Not a valid configuration!");
         process.exit(1);
-    },
+    };
 
-    write: function () {
+    this.write = function () {
 
         if (fs.existsSync(configurationPath) && !this.isOpen) {
             logger.error("cgpfile already exists!");
@@ -58,9 +61,9 @@ let configPrototype = {
 
         fs.writeFileSync(configurationPath, content);
         logger.info("Config file updated!");
-    },
+    };
 
-    includesModule: function (module) {
+    this.includesModule = function (module) {
         if(!this.isOpen){
             logger.error("Internal error! Config file must be opened before modules can be accessed.");
             process.exit(1);
@@ -73,12 +76,12 @@ let configPrototype = {
         }
 
         return false;
-    }
-};
+    };
+}
 
 
 module.exports = () => {
-    return Object.create(configPrototype);
+    return Object.create(new ConfigPrototype());
 };
 
 

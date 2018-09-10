@@ -27,7 +27,7 @@ if(!fs.existsSync(process.cwd() + "/package.json")){
 }
 
 const rootDir = readline.question(`\nEnter Root directory: ("./app"):\n`);
-const jsDir = readline.question(`\nnter Javascript directory relative to Root directory: ("./js"):\n`);
+const jsDir = readline.question(`\nEnter Javascript directory relative to Root directory: ("./js"):\n`);
 const htmlDir = readline.question(`\nEnter Html directory relative to Root directory: ("./"):\n`);
 const cssDir = readline.question(`\nEnter Css directory relative to Root directory: ("./css"):\n`);
 const resDir = readline.question(`\nEnter Resources directory relative to Root directory: ("./res"):\n`);
@@ -74,7 +74,7 @@ if(!appName){
         devDependencies: {},
         license: "ISC",
         author: author
-    }
+    };
 }
 
 const cgpPackage = require("./package.json");
