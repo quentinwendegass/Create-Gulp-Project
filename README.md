@@ -140,14 +140,17 @@ Notice that `gulp watch` does not clean the build directory, because of that you
 Enables css autoprefixing in the build.
 
 ### concat
-Concatenates all files that are in a folder sorted by filename. The output file is names after the folder. 
+Concatenates all files that are in a folder. The output file is names after the folder. 
 
 ##### Options
+
+* order: Array of file names that should be ordered relative to the corresponding build directory.
 
 * buildTasks: Specifies what build processes should be concatenated (Default: ["js", "css"])
 
 ##### Example:
 
+**Directory Structure:**
 ```
 ├── dist
 │   └── js
@@ -155,11 +158,24 @@ Concatenates all files that are in a folder sorted by filename. The output file 
 │       └── main.js
 ├── js
 │   ├── main
-│   │    ├── test1.ts
+│   │    ├── test1.js
 │   │    └── test2.js
 │   └── other.js
 
 ```
+
+**Options**
+```json
+{
+  "buildTasks": ["js"],
+  "order": [
+    "main/test1.js",
+    "main/test2.js"
+  ]
+}
+```
+
+
 ### imagemin
 Compresses **png**, **jpg**, **svg** and **gif** images that are in the resources folder.
 

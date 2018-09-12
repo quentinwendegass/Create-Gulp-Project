@@ -42,6 +42,10 @@
         "buildTasks": [
           "css",
           "js"
+        ],
+        "order": [
+          "main/test1.js",
+          "main/test2.js"
         ]
       }
     },
