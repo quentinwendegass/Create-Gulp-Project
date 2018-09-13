@@ -37,6 +37,7 @@ module.exports = function () {
         success.push(module);
 
         loader.invokeModuleScript(module, config);
+        loader.addModuleDependencies(module, config);
     }
 
     config.write();

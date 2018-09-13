@@ -35,6 +35,7 @@ module.exports = function () {
             if (config.modules[i].name === module) {
                 config.modules.splice(i, 1);
                 success.push(module);
+                loader.removeModuleDependencies(module, config);
                 break;
             }
         }

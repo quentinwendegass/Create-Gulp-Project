@@ -5,6 +5,78 @@ const gulp = require("gulp");
 
 
 
+module.exports.addModuleDependencies = (module, config) => {
+    let paths = [__dirname.concat("/default-modules")];
+
+    if(config.external){
+        paths = paths.concat(config.external);
+    }
+
+    let data = fs.readFileSync(process.cwd() + "/package.json");
+    let json = JSON.parse(data);
+
+    for(let i = 0; i < paths.length; i++){
+        let files = fs.readdirSync(paths[i]);
+
+        if(files.includes(module + ".js")){
+            let m = require(paths[i] + "/" + module);
+            if(m.dependencies){
+                for(let j = 0; j < m.dependencies.length; j++){
+
+                    if(json){
+                        if(json.dependencies[m.dependencies[j].name]){
+                            logger.warn(`${m.dependencies[j].name} is already in your package.json!`);
+                            continue;
+                        }
+                        json.dependencies[m.dependencies[j].name] = m.dependencies[j].version;
+                        logger.log(`${m.dependencies[j].name} added to package.json.`);
+                    }
+                }
+            }
+            break;
+        }
+    }
+
+    fs.writeFileSync(process.cwd() + "/package.json", JSON.stringify(json, null, 2));
+    logger.log(`Updated package.json!`);
+};
+
+module.exports.removeModuleDependencies = (module, config) => {
+    let paths = [__dirname.concat("/default-modules")];
+
+    if(config.external){
+        paths = paths.concat(config.external);
+    }
+
+    let data = fs.readFileSync(process.cwd() + "/package.json");
+    let json = JSON.parse(data);
+
+    for(let i = 0; i < paths.length; i++){
+        let files = fs.readdirSync(paths[i]);
+
+        if(files.includes(module + ".js")){
+            let m = require(paths[i] + "/" + module);
+            if(m.dependencies){
+                for(let j = 0; j < m.dependencies.length; j++){
+
+                    if(json){
+                        if(!json.dependencies[m.dependencies[j].name]){
+                            logger.warn(`${m.dependencies[j].name} is not in your package.json!`);
+                            continue;
+                        }
+                        delete json.dependencies[m.dependencies[j].name];
+                        logger.log(`${m.dependencies[j].name} removed from package.json.`);
+                    }
+                }
+            }
+            break;
+        }
+    }
+
+    fs.writeFileSync(process.cwd() + "/package.json", JSON.stringify(json, null, 2));
+    logger.log(`Updated package.json!`);
+};
+
 module.exports.invokeModuleScript = (module, config) => {
     let paths = [__dirname.concat("/default-modules")];
 

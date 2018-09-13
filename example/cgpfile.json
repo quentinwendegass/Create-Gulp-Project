@@ -7,29 +7,11 @@
   "distDir": "./dist",
   "modules": [
     {
-      "name": "minify",
-      "options": {
-        "buildTasks": [
-          "css",
-          "js",
-          "html"
-        ]
-      }
-    },
-    {
-      "name": "imagemin"
-    },
-    {
-      "name": "autoprefixer"
+      "name": "babel",
+      "options": {}
     },
     {
       "name": "server",
-      "options": {
-        "port": 8070
-      }
-    },
-    {
-      "name": "sass",
       "options": {}
     },
     {
@@ -37,20 +19,23 @@
       "options": {}
     },
     {
-      "name": "concat",
-      "options": {
-        "buildTasks": [
-          "css",
-          "js"
-        ],
-        "order": [
-          "main/test1.js",
-          "main/test2.js"
-        ]
-      }
+      "name": "sass",
+      "options": {}
     },
     {
-      "name": "babel",
+      "name": "minify",
+      "options": {}
+    },
+    {
+      "name": "concat",
+      "options": {}
+    },
+    {
+      "name": "autoprefixer",
+      "options": {}
+    },
+    {
+      "name": "imagemin",
       "options": {}
     }
   ],

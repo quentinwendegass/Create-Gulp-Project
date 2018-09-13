@@ -1,11 +1,15 @@
 const gulp = require("gulp");
 const plumber = require("gulp-plumber");
-const nunjucksRender = require("gulp-nunjucks-render");
 const logger = require("../logger");
 const { Command } = require("../command");
 const fs = require("fs");
 const watch = require("gulp-watch");
 
+const prequire = require("parent-require");
+const nunjucksRender = prequire("gulp-nunjucks-render");
+
+
+module.exports.dependencies = [{name: "gulp-nunjucks-render", version: "^2.2.2"}];
 
 module.exports.script = (config) => {
     mkDir(config.rootDir + "/pages");

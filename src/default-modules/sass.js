@@ -1,11 +1,15 @@
 const { Command } = require("../command");
-const sass = require("gulp-sass");
 const gulp = require("gulp");
 const plumber = require("gulp-plumber");
 const logger = require("../logger");
 const fs = require("fs");
 const watch = require("gulp-watch");
 
+const prequire = require("parent-require");
+const sass = prequire("gulp-sass");
+
+
+module.exports.dependencies = [{name: "gulp-sass", version: "^4.0.1"}];
 
 module.exports.script = (config) => {
     try {
