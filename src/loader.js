@@ -107,6 +107,8 @@ module.exports.loadModuleCommands = (mods) => {
     }
 
     if(!mods){
+        let _runTask = gulp.Gulp.prototype._runTask;
+
         gulp.Gulp.prototype._runTask = function (task) {
             this.commands = [];
             this.config = config;
