@@ -8,5 +8,10 @@ module.exports = function (done) {
         taskNames[i] = this.commands[i].cmd();
     }
 
-    runSequence(taskNames, 'clear-dist',['build-css', 'build-js', 'build-html', 'move-res'], done);
+    if(taskNames.length > 0){
+        runSequence(taskNames, 'clear-dist',['build-css', 'build-js', 'build-html', 'move-res'], done);
+
+    }else{
+        runSequence('clear-dist',['build-css', 'build-js', 'build-html', 'move-res'], done);
+    }
 };
