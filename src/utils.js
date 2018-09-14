@@ -12,3 +12,8 @@ module.exports.getArgsFor = task => {
 
     return args;
 };
+
+module.exports.getTaskArg = () => {
+    let taskIndex = process.argv.findIndex(v => v.endsWith("gulp")) + 1;
+    return process.argv[taskIndex];
+};

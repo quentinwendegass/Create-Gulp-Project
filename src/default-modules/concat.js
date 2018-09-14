@@ -1,9 +1,6 @@
 const {  Command } = require("../command");
 
 const prequire = require("parent-require");
-const gulpOrder = prequire('gulp-order');
-const concat = prequire("gulp-concat-flatten");
-const rename = prequire('gulp-rename');
 
 
 module.exports.dependencies = [
@@ -12,6 +9,10 @@ module.exports.dependencies = [
     {name: "gulp-rename", version: "^1.4.0"}];
 
 module.exports.commands = ({ buildTasks, priority, order }, config) => {
+
+    const gulpOrder = prequire('gulp-order');
+    const concat = prequire("gulp-concat-flatten");
+    const rename = prequire('gulp-rename');
 
     buildTasks = buildTasks || ['css', 'js'];
     priority = priority || 100;

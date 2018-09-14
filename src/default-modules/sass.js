@@ -6,7 +6,6 @@ const fs = require("fs");
 const watch = require("gulp-watch");
 
 const prequire = require("parent-require");
-const sass = prequire("gulp-sass");
 
 
 module.exports.dependencies = [{name: "gulp-sass", version: "^4.0.1"}];
@@ -20,6 +19,8 @@ module.exports.script = (config) => {
 };
 
 module.exports.commands = ({ sassDir }, config) => {
+
+    const sass = prequire("gulp-sass");
 
     sassDir = sassDir || 'sass';
     sassDir = config.rootDir + "/" + sassDir + "/**/*.scss";

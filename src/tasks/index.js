@@ -2,6 +2,7 @@ const fs = require("fs");
 const gulp = require("gulp");
 const loader = require("../loader");
 const config = require("../config")();
+const utils = require("../utils");
 
 module.exports = () => {
 
@@ -9,7 +10,13 @@ module.exports = () => {
 
     config.open();
 
-    loader.loadModuleCommands(config.modules);
+
+    const task = utils.getTaskArg();
+    console.log(task);
+
+    if(!/add|remove|list|list-all/.test(task)){
+        loader.loadModuleCommands(config.modules);
+    }
 
     for(let i = 0; i < files.length; i++){
         const file = files[i].replace(/\.js$/, "");

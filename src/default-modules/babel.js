@@ -2,7 +2,6 @@ const { Command } = require("../command");
 const fs = require("fs");
 
 const prequire = require("parent-require");
-const babel = prequire('gulp-babel');
 
 module.exports.dependencies = [
     {name: "gulp-babel", version: "^8.0.0"},
@@ -19,5 +18,7 @@ module.exports.script = (config) => {
 };
 
 module.exports.commands = () => {
+    const babel = prequire('gulp-babel');
+
     return [new Command(() => babel(), 50, ['build-js'])];
 };

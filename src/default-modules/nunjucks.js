@@ -6,7 +6,6 @@ const fs = require("fs");
 const watch = require("gulp-watch");
 
 const prequire = require("parent-require");
-const nunjucksRender = prequire("gulp-nunjucks-render");
 
 
 module.exports.dependencies = [{name: "gulp-nunjucks-render", version: "^2.2.2"}];
@@ -38,6 +37,8 @@ function mkDir(path){
 }
 
 module.exports.commands = ({ pagesDir, templateDir }, config) => {
+
+    const nunjucksRender = prequire("gulp-nunjucks-render");
 
     pagesDir = pagesDir || "pages";
     pagesDir = config.rootDir + "/" + pagesDir + "/**/*.+(html|njk)";

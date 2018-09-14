@@ -3,12 +3,13 @@ const http = require("http");
 const logger = require("../logger");
 
 const prequire = require("parent-require");
-const st = prequire("st");
 
 
 module.exports.dependencies = [{name: "st", version: "^1.2.2"}];
 
 module.exports.commands = ({port}, config) => {
+
+    const st = prequire("st");
 
     port = port || 3500;
 

@@ -1,10 +1,6 @@
 const { Command } = require("../command");
 
 const prequire = require("parent-require");
-const minifyJS = prequire('gulp-minify');
-const minifyHTML = prequire('gulp-htmlmin');
-const cleanCSS = prequire('gulp-clean-css');
-const rename = prequire('gulp-rename');
 
 
 module.exports.dependencies = [
@@ -14,6 +10,11 @@ module.exports.dependencies = [
     {name: "gulp-rename", version: "^1.4.0"}];
 
 module.exports.commands = ({ buildTasks, priority }) => {
+
+    const minifyJS = prequire('gulp-minify');
+    const minifyHTML = prequire('gulp-htmlmin');
+    const cleanCSS = prequire('gulp-clean-css');
+    const rename = prequire('gulp-rename');
 
     buildTasks = buildTasks || ['css', 'js', 'html'];
     priority = priority || 300;
