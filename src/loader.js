@@ -99,10 +99,25 @@ module.exports.invokeModuleScript = (module, config) => {
     }
 };
 
+
 module.exports.loadModuleCommands = (mods) => {
+
+    if(!config.isOpen){
+        config.open();
+    }
+
+    if(!mods){
+        gulp.Gulp.prototype._runTask = function (task) {
+            this.commands = [];
+            this.config = config;
+
+            _runTask.apply(this, arguments);
+        };
+        return;
+    }
+
     let paths = [__dirname.concat("/default-modules")];
 
-    config.open();
 
     if(config.external){
         paths = paths.concat(config.external);
