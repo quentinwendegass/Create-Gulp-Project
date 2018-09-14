@@ -46,6 +46,6 @@ module.exports = function () {
     for (let i = 0; i < success.length; i++) {
         logger.info(`+ ${success[i]}`);
     }
-    logger.info("");
+    logger.info("\nRun npm install to get the dependencies!\n");
 };
 
