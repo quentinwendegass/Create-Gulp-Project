@@ -12,7 +12,6 @@ module.exports = () => {
 
 
     const task = utils.getTaskArg();
-    console.log(task);
 
     if(/add|remove|list|list-all/.test(task)){
         loader.loadModuleCommands();

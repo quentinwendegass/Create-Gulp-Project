@@ -37,6 +37,12 @@
     {
       "name": "imagemin",
       "options": {}
+    },
+    {
+      "name": "linter",
+      "options": {
+        "priority": 60
+      }
     }
   ],
   "external": []

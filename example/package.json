@@ -18,7 +18,10 @@
     "gulp-concat-flatten": "^0.2.1",
     "gulp-order": "^1.1.1",
     "gulp-autoprefixer": "^6.0.0",
-    "gulp-imagemin": "^4.1.0"
+    "gulp-imagemin": "^4.1.0",
+    "gulp-jshint": "^2.1.0",
+    "jshint": "^2.9.6",
+    "jshint-stylish": "^2.2.1"
   },
   "devDependencies": {},
   "license": "ISC",
