@@ -220,6 +220,11 @@ Compiler for Javascript. For more information visit [Babeljs](https://babeljs.io
 You can configure babel within the **.babelrc** file.
 
 
+### linter
+Linting for Javascript. For more information visit [JsHint](http://jshint.como)
+
+You can configure JsHint within the **.jshintrc** file.
+
 
 
 
