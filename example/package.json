@@ -6,7 +6,7 @@
     "create-gulp-project": "file:../",
     "gulp-babel": "^8.0.0",
     "@babel/preset-typescript": "^7.0.0",
-    "@babel/core": "^7.0.0",
+    "@babel/core": "^7.20.7",
     "@babel/preset-env": "^7.0.0",
     "st": "^1.2.2",
     "gulp-nunjucks-render": "^2.2.2",
